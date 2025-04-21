@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stockle - Guess the Ticker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    </head>
+<body>
+    <div class="header-content">
+        <div class="title-area">
+            <h1 id="game-title">Stockle</h1>
+            <p id="game-subtitle">Guess the stock ticker!</p>
+        </div>
+        <div id="header-icons">
+            <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle Theme">
+                <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button id="info-btn" class="icon-btn" aria-label="How to Play"><span class="icon icon-info"></span></button>
+            <button id="stats-btn" class="icon-btn" aria-label="Statistics"><span class="icon icon-stats"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></span></button>
+        </div>
+    </div>
+
+    <div id="chart-container"></div>
+
+    <div id="main-game-content">
+        <div id="guess-grid">
+            </div>
+        <div id="message-area"></div>
+        <div id="input-area">
+            <input type="text" id="guess-input" readonly>
+            <button id="guess-button">Guess</button>
+            <button id="freebie-button">Freebie (1)</button>
+        </div>
+    </div>
+
+    <div id="keyboard-area">
+        </div>
+
+    <button id="play-again-button">Play Again</button>
+
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" data-modal-id="info-modal">×</span>
+            <h2>How to Play Stockle</h2>
+            <p>Guess the secret stock ticker in 6 tries!</p>
+            <ul>
+                <li>Enter a valid stock ticker of the required length and press Enter or Guess.</li>
+                <li>The TradingView chart above shows the price history of the secret ticker (with its name hidden!) - use it as a clue.</li>
+                <li>After each guess, the color of the tiles will change to show how close your guess was.</li>
+            </ul>
+            <p><strong>Examples:</strong></p>
+            <p><span class="example-tile ex-correct">A</span><span class="example-tile">A</span><span class="example-tile">P</span><span class="example-tile">L</span> - Letter <strong>A</strong> is correct.</p>
+            <p><span class="example-tile">M</span><span class="example-tile ex-present">S</span><span class="example-tile">F</span><span class="example-tile">T</span> - Letter <strong>S</strong> is present.</p>
+            <p><span class="example-tile">G</span><span class="example-tile">O</span><span class="example-tile ex-absent">O</span><span class="example-tile">G</span> - Letter <strong>O</strong> is absent.</p>
+            <p>Use the <strong>Freebie</strong> button once per game for a hint!</p>
+        </div>
+    </div>
+
+    <div id="stats-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" data-modal-id="stats-modal">×</span>
+            <h2>Statistics</h2>
+            <div class="stats-grid">
+                <div><div class="stat-value" id="stats-played">0</div><div class="stat-label">Played</div></div>
+                <div><div class="stat-value" id="stats-win-pct">0</div><div class="stat-label">Win %</div></div>
+                <div><div class="stat-value" id="stats-current-streak">0</div><div class="stat-label">Current Streak</div></div>
+                <div><div class="stat-value" id="stats-max-streak">0</div><div class="stat-label">Max Streak</div></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
